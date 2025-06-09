@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="dist/img/tree_favicon.png" sizes="16x16" type="image/png">
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+<script src="https://kit.fontawesome.com/a1f05848d0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="./dist/css/style.min.css">
+</head>
+
+<body>
+    <div class="quiz-container">
+        <div class="page active-page" data-number="1">
+            <h1>Witaj w moim quizie!</h1>
+            <label for="text">Jak się nazywasz?</label>
+            <input type="text" placeholder="Podaj swoje imię 😃">
+        </div>
+        <div class="page" data-number="2">Form#2</div>
+        <div class="page" data-number="3">Form#3</div>
+        <div class="page" data-number="4">Form#4</div>
+        <div class="page" data-number="5">Form#5</div>
+    </div>
+
+    <div class="progress-box">
+        <div class="progress-bar"></div>
+        <div class="step active-step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+    </div>
+
+    <script src="./dist/js/main.min.js"></script>
+</body>
+
+</html>

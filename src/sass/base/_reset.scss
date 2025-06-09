@@ -1,0 +1,20 @@
+@use '../utilities/colors' as *;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	font-size: 62.5%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100dvh;
+	font-family: 'Montserrat', sans-serif;
+	background-color: $bcg-color;
+	font-size: 1.6rem;
+}
