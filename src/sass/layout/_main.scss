@@ -1,84 +1,59 @@
 @use '../utilities/colors' as *;
 
-.quiz-container {
+.quiz {
 	margin-bottom: 3em;
-	width: 600px;
-	height: 300px;
+	width: 700px;
+	height: 450px;
 	border-radius: 6px;
 	overflow: hidden;
+
+	&__page {
+		display: none;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		font-size: 22px;
+		background-color: $quiz-page-color;
+		background: $quiz-bcg-color;
+		&-title {
+			text-transform: uppercase;
+		}
+	}
+	&-active {
+		display: flex;
+	}
+	label {
+		display: block;
+		text-align: center;
+		font-size: 2.6rem;
+		margin-bottom: 1em;
+		font-weight: 500;
+	}
+	input {
+		text-align: center;
+		background: none;
+		padding: 0.5em 0;
+		font-size: 2.2rem;
+		color: rgb(218, 206, 206);
+		border-radius: 6px;
+		border: 5px double rgb(0, 161, 167);
+		
+	}
+	.btn {
+		padding: 0.5em 2em;
+		border-radius: 6px;
+		font-size: 2rem;
+		background-color: $btn-color;
+		border: none;
+		cursor: pointer;
+		&:hover {
+			background-color: rgb(16, 159, 163);
+		}
+	}
 }
-.page {
-	display: none;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	font-size: 22px;
-	background-color: #fff;
-}
+
 .page:nth-child(even) {
 	background-color: #bbb;
-}
-
-.active-page {
-	display: flex;
-}
-.progress-box {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 3em;
-	width: 600px;
-}
-.progress-box::before,
-.progress-bar {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	height: 4px;
-	background-color: #ddd;
-	z-index: -1;
-}
-.progress-box::before {
-	content: '';
-	width: 100%;
-	background-color: #ddd;
-}
-.progress-bar {
-	width: 0%;
-	background-color: royalblue;
-	transition: width 0.3s;
-}
-
-.step {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 48px;
-	width: 48px;
-	border-radius: 50%;
-	color: #333;
-	background-color: #fff;
-	border: 3px solid #ddd;
-}
-.active-step {
-	background-color: royalblue;
-	color: #fff;
-	border-color: rgb(49, 86, 197);
-}
-
-.btn {
-	padding: 0.7em 2em;
-	font-size: 18px;
-	color: #fff;
-	background-color: royalblue;
-	border: none;
-	border-radius: 6px;
-	cursor: pointer;
-}
-.btn:disabled {
-	background-color: #ddd;
-	color: #333;
-	cursor: default;
 }

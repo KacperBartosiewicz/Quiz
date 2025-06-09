@@ -1,1 +1,45 @@
-@forward './components';
+@use '../utilities/colors' as *;
+
+.progress-box {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 3em;
+	width: 600px;
+
+}
+.progress-box::before,
+.progress-bar {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 4px;
+	background-color: #ddd;
+	z-index: -1;
+}
+.progress-box::before {
+	content: '';
+	width: 100%;
+	background-color: #ddd;
+}
+.progress-bar {
+	width: 0%;
+	background-color: $bar-color;
+	transition: width 0.3s;
+}
+
+.step {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 48px;
+	width: 48px;
+	border-radius: 50%;
+	color: #333;
+	background-color: #fff;
+	
+}
+.active-step {
+	background-color: $bar-color;
+	box-shadow: 0 0 10px $bar-color;
+}

@@ -10,16 +10,20 @@
 </head>
 
 <body>
-    <div class="quiz-container">
-        <div class="page active-page" data-number="1">
-            <h1>Witaj w moim quizie!</h1>
-            <label for="text">Jak się nazywasz?</label>
-            <input type="text" placeholder="Podaj swoje imię 😃">
+    <div class=" quiz quiz-container">
+        <div class="quiz__page quiz-active" data-number="1">
+            <h1 class="quiz__page-title">Witaj w moim quizie!</h1>
+            <div class="quiz__form">
+                <label for="text">Jak się nazywasz? 😃</label>
+                <input type="text" placeholder="Podaj imię">
+            </div>
+            <button class="btn next-btn">Next</button>
         </div>
-        <div class="page" data-number="2">Form#2</div>
-        <div class="page" data-number="3">Form#3</div>
-        <div class="page" data-number="4">Form#4</div>
-        <div class="page" data-number="5">Form#5</div>
+        <div class="quiz__page" data-number="2">Form#2</div>
+        <div class="quiz__page" data-number="3">Form#3</div>
+        <div class="quiz__page" data-number="4">Form#4</div>
+        <div class="quiz__page" data-number="5">Form#5</div>
+
     </div>
 
     <div class="progress-box">
