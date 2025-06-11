@@ -6,7 +6,6 @@
 	justify-content: space-between;
 	margin-bottom: 3em;
 	width: 600px;
-
 }
 .progress-box::before,
 .progress-bar {
@@ -37,9 +36,18 @@
 	border-radius: 50%;
 	color: #333;
 	background-color: #fff;
-	
 }
 .active-step {
-	background-color: $bar-color;
-	box-shadow: 0 0 10px $bar-color;
+	background-color: #fff;
+	animation: showStep 0.8s forwards;
+}
+
+@keyframes showStep {
+	from {
+		background-color: #fff;
+	}
+	to {
+		background-color: $bar-color;
+		box-shadow: 0 0 10px $bar-color;
+	}
 }
