@@ -18,12 +18,13 @@
 		font-size: 22px;
 		background-color: $quiz-page-color;
 		background: $quiz-bcg-color;
+		box-shadow: inset 0px 0px 15px 1px hsla(270, 6%, 73%, 0.4);
 		transition: transform 0.4s;
 		&-title {
 			text-transform: uppercase;
 		}
 	}
-	
+
 	&__form {
 		display: flex;
 		flex-direction: column;
