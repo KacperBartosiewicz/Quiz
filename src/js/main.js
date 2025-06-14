@@ -5,6 +5,8 @@ const progressBar = document.querySelector('.progress-bar')
 const nextBtn = document.querySelector('.btn-next')
 const inputName = document.querySelector('.quiz__form-name')
 const error = document.querySelector('.quiz-error')
+const easyWay = document.querySelector('.easy')
+const hardWay = document.querySelector('.hard')
 const pageHeight = 450
 
 let currentStep = 1
@@ -35,9 +37,7 @@ const handleProgressBar = () => {
 	const activeSteps = document.querySelectorAll('.active-step')
 	progressBar.style.width = ((activeSteps.length - 1) / (steps.length - 1)) * 100 + '%'
 	changePage()
-	
 }
-
 
 const changePage = () => {
 	pages.forEach(page => {
@@ -46,3 +46,5 @@ const changePage = () => {
 }
 
 nextBtn.addEventListener('click', checkInput)
+easyWay.addEventListener('click', handleNextPage)
+hardWay.addEventListener('click', handleNextPage)

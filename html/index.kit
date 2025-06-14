@@ -11,8 +11,8 @@
 
 <body>
     <div class=" quiz quiz-container">
-        <div class="quiz__page quiz-active" data-number="1">
-            <h1 class="quiz__page-title">Witaj w moim quizie!</h1>
+        <div class="quiz__page" data-number="1">
+            <h1 class="quiz__page-title">Quizomania</h1>
             <div class="quiz__form">
                 <label for="text">Jak się nazywasz? 😃</label>
                 <input class="quiz__form-name" type="text" placeholder="Podaj imię">
@@ -20,7 +20,21 @@
             </div>
             <button class="btn btn-next">Next</button>
         </div>
-        <div class="quiz__page" data-number="2">Form#2</div>
+        <div class="quiz__page quiz-active" data-number="2">
+            <h2 class="quiz-title">Wybierz poziom trudności</h2>
+            <div class="quiz__img">
+                <div class="quiz__img-question easy"><img src="/dist/img/question-mark-40876_640.png"
+                        alt="zielony znak zapytania">
+                </div>
+                <div class="quiz__img-question hard"><img src="/dist/img/interrogation-point-150807_640.png"
+                        alt="czerwony znak zapytania"></div>
+            </div>
+            <div class="quiz__text">
+                <p class="quiz__text-easy">Łatwy</p>
+                <p class="quiz__text-hard">Trudny</p>
+            </div>
+
+        </div>
         <div class="quiz__page" data-number="3">Form#3</div>
         <div class="quiz__page" data-number="4">Form#4</div>
         <div class="quiz__page" data-number="5">Form#5</div>
