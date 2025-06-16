@@ -7,7 +7,13 @@ const inputName = document.querySelector('.quiz__form-name')
 const error = document.querySelector('.quiz-error')
 const easyWay = document.querySelector('.easy')
 const hardWay = document.querySelector('.hard')
-const pageHeight = 450
+const quizBox = document.querySelector('.quiz__box')
+const quizTime = document.querySelector('.quiz__slider-time')
+const slider = document.querySelector('#slider')
+const pageHeight = 500
+let level
+let points
+let sec = 10
 
 let currentStep = 1
 
@@ -45,6 +51,26 @@ const changePage = () => {
 	})
 }
 
+const checkLevel = e => {
+	if (e.target.parentElement.matches('.easy')) {
+		level = 'easy'
+	} else {
+		level = 'hard'
+	}
+	handleNextPage()
+}
+const startCounter = () => {
+	if (sec > 0) {
+		sec--
+		quizTime.textContent = `${sec}s`
+		slider.value = sec
+	} else {
+		return
+	}
+}
+
+setInterval(() => {
+	startCounter()
+}, 1000)
 nextBtn.addEventListener('click', checkInput)
-easyWay.addEventListener('click', handleNextPage)
-hardWay.addEventListener('click', handleNextPage)
+quizBox.addEventListener('click', checkLevel)
