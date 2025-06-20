@@ -53,7 +53,9 @@
 }
 
 .quiz {
-	.first {
+	.first,
+	.second,
+	.third {
 		padding: 1em;
 		justify-content: flex-start;
 		img {
@@ -101,5 +103,6 @@
 		td:hover {
 			background-color: rgb(188, 183, 183);
 		}
+		
 	}
 }

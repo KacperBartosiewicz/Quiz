@@ -8,12 +8,16 @@ const error = document.querySelector('.quiz-error')
 const easyWay = document.querySelector('.easy')
 const hardWay = document.querySelector('.hard')
 const quizBox = document.querySelector('.quiz__box')
-const quizTime = document.querySelector('.quiz__slider-time')
-const slider = document.querySelector('#slider')
-const pageHeight = 500
+const quizTimes = document.querySelectorAll('.quiz__slider-time')
+const sliders = document.querySelectorAll('.slider')
+const times = document.querySelectorAll('.quiz__slider-time')
+const answers = document.querySelectorAll('.quiz__answers')
+const pageHeight = 530
 let level
 let points
+let index = 0
 let sec = 10
+let countTime
 
 let currentStep = 1
 
@@ -23,6 +27,7 @@ const handleNextPage = () => {
 		currentStep = steps.length
 	}
 	handleProgressBar()
+	startCounter()
 }
 
 const checkInput = () => {
@@ -43,11 +48,21 @@ const handleProgressBar = () => {
 	const activeSteps = document.querySelectorAll('.active-step')
 	progressBar.style.width = ((activeSteps.length - 1) / (steps.length - 1)) * 100 + '%'
 	changePage()
+	handleCurrentPage()
 }
 
 const changePage = () => {
 	pages.forEach(page => {
 		page.style.transform = `translateY(${-(currentStep - 1) * pageHeight}px)`
+	})
+}
+const handleCurrentPage = () => {
+	pages.forEach(page => {
+		if (currentStep == page.dataset.number) {
+			page.classList.add('quiz-active')
+		} else {
+			page.classList.remove('quiz-active')
+		}
 	})
 }
 
@@ -60,17 +75,41 @@ const checkLevel = e => {
 	handleNextPage()
 }
 const startCounter = () => {
-	if (sec > 0) {
-		sec--
-		quizTime.textContent = `${sec}s`
-		slider.value = sec
-	} else {
-		return
-	}
+	clearInterval(countTime)
+	countTime = setInterval(() => {
+		if (sec > 0 && sliders[index].closest('.quiz__page').classList.contains('quiz-active')) {
+			const time = times[index]
+			sec--
+			time.textContent = `${sec}s`
+			sliders[index].value = sec
+		} else if (sec === 0) {
+			handleNextPage()
+			resetTime()
+		} else {
+			return
+		}
+	}, 1000)
+}
+const resetTime = () => {
+	sec = 10
+	index++
 }
 
-setInterval(() => {
-	startCounter()
-}, 1000)
+const checkAnswer = e => {
+	if (e.target.matches('.correct') && e.target.tagName.toLowerCase() === 'td') {
+		e.target.style.backgroundColor = 'rgb(150, 211, 28)'
+		setTimeout(() => {
+			resetTime()
+			handleNextPage()
+		}, 1000)
+	} else if (e.target.tagName.toLowerCase() === 'td') {
+		e.target.style.backgroundColor = 'rgb(255, 82, 52)'
+		setTimeout(() => {
+			resetTime()
+			handleNextPage()
+		}, 1000)
+	}
+}
 nextBtn.addEventListener('click', checkInput)
 quizBox.addEventListener('click', checkLevel)
+answers.forEach(answer => addEventListener('click', checkAnswer))
