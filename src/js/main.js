@@ -7,17 +7,19 @@ const inputName = document.querySelector('.quiz__form-name')
 const error = document.querySelector('.quiz-error')
 const easyWay = document.querySelector('.easy')
 const hardWay = document.querySelector('.hard')
-const quizBox = document.querySelector('.quiz__box')
+const quizImages = document.querySelectorAll('.quiz__img-question')
+console.log(quizImages)
 const quizTimes = document.querySelectorAll('.quiz__slider-time')
 const sliders = document.querySelectorAll('.slider')
 const times = document.querySelectorAll('.quiz__slider-time')
 const answers = document.querySelectorAll('.quiz__answers')
 const pageHeight = 530
 let level
-let points
+let points = 0
 let index = 0
 let sec = 10
 let countTime
+let time
 
 let currentStep = 1
 
@@ -67,6 +69,7 @@ const handleCurrentPage = () => {
 }
 
 const checkLevel = e => {
+	console.log(e.target.parentElement)
 	if (e.target.parentElement.matches('.easy')) {
 		level = 'easy'
 	} else {
@@ -78,7 +81,7 @@ const startCounter = () => {
 	clearInterval(countTime)
 	countTime = setInterval(() => {
 		if (sec > 0 && sliders[index].closest('.quiz__page').classList.contains('quiz-active')) {
-			const time = times[index]
+			time = times[index]
 			sec--
 			time.textContent = `${sec}s`
 			sliders[index].value = sec
@@ -94,22 +97,26 @@ const resetTime = () => {
 	sec = 10
 	index++
 }
+const handleNextQuestion = () => {
+	setTimeout(() => {
+		resetTime()
+		handleNextPage()
+	}, 1000)
+}
 
 const checkAnswer = e => {
 	if (e.target.matches('.correct') && e.target.tagName.toLowerCase() === 'td') {
 		e.target.style.backgroundColor = 'rgb(150, 211, 28)'
-		setTimeout(() => {
-			resetTime()
-			handleNextPage()
-		}, 1000)
+		points++
+		answers[index].style.pointerEvents = 'none'
+		handleNextQuestion()
 	} else if (e.target.tagName.toLowerCase() === 'td') {
 		e.target.style.backgroundColor = 'rgb(255, 82, 52)'
-		setTimeout(() => {
-			resetTime()
-			handleNextPage()
-		}, 1000)
+		answers[index].style.pointerEvents = 'none'
+		handleNextQuestion()
 	}
 }
+
 nextBtn.addEventListener('click', checkInput)
-quizBox.addEventListener('click', checkLevel)
-answers.forEach(answer => addEventListener('click', checkAnswer))
+quizImages.forEach(image => image.addEventListener('click', checkLevel))
+answers.forEach(answer => answer.addEventListener('click', checkAnswer))
