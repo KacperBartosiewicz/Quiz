@@ -59,16 +59,18 @@
 		padding: 1em;
 		justify-content: flex-start;
 		img {
-			width: 60%;
+			width: 65%;
 			margin-bottom: 0.5em;
-			border: 10px solid #171dc3b3;
-			border-radius: 2px;
+			border: 8px solid transparent;
+			border-image: linear-gradient(to right, #3b3faf, #973bb8) 50;
+			border-image-slice: 1;
 		}
 		h3 {
 			text-transform: uppercase;
 			margin-top: 0.5em;
 		}
 	}
+
 	&__slider {
 		width: 40%;
 		display: flex;
@@ -103,6 +105,5 @@
 		td:hover {
 			background-color: rgb(188, 183, 183);
 		}
-		
 	}
 }
