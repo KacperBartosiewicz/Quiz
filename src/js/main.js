@@ -8,7 +8,6 @@ const error = document.querySelector('.quiz-error')
 const easyWay = document.querySelector('.easy')
 const hardWay = document.querySelector('.hard')
 const quizImages = document.querySelectorAll('.quiz__img-question')
-console.log(quizImages)
 const quizTimes = document.querySelectorAll('.quiz__slider-time')
 const sliders = document.querySelectorAll('.slider')
 const times = document.querySelectorAll('.quiz__slider-time')
@@ -69,7 +68,6 @@ const handleCurrentPage = () => {
 }
 
 const checkLevel = e => {
-	console.log(e.target.parentElement)
 	if (e.target.parentElement.matches('.easy')) {
 		level = 'easy'
 	} else {
@@ -115,6 +113,7 @@ const checkAnswer = e => {
 		answers[index].style.pointerEvents = 'none'
 		handleNextQuestion()
 	}
+	
 }
 
 nextBtn.addEventListener('click', checkInput)
