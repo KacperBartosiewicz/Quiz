@@ -12,6 +12,11 @@ const quizTimes = document.querySelectorAll('.quiz__slider-time')
 const sliders = document.querySelectorAll('.slider')
 const times = document.querySelectorAll('.quiz__slider-time')
 const answers = document.querySelectorAll('.quiz__answers')
+const restartBtn = document.querySelector('.btn-restart')
+const user = document.querySelector('.quiz__summary-user')
+const result = document.querySelector('.result')
+const summaryInfo = document.querySelector('.quiz__summary-info')
+
 const pageHeight = 530
 let level
 let points = 0
@@ -113,9 +118,22 @@ const checkAnswer = e => {
 		answers[index].style.pointerEvents = 'none'
 		handleNextQuestion()
 	}
-	
 }
 
+const showResult = () => {
+	result.textContent = `${points}`
+	if ((points === 10)) {
+		summaryInfo.textContent = 'Gratulację odpowiedziałeś na wszystkie pytania poprawnie 😀'
+		summaryInfo.style.color = 'greenyellow'
+	} else if (points >= 6) {
+		summaryInfo.textContent = 'Odpowiedziałeś na więcej niż 50% pytań poprawnie '
+		summaryInfo.style.color = 'orange'
+	} else {
+		summaryInfo.textContent = 'Musisz się bardziej podszkolić ☹️'
+		summaryInfo.style.color = 'tomato'
+	}
+}
+showResult()
 nextBtn.addEventListener('click', checkInput)
 quizImages.forEach(image => image.addEventListener('click', checkLevel))
 answers.forEach(answer => answer.addEventListener('click', checkAnswer))
