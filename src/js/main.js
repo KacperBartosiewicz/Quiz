@@ -24,7 +24,7 @@ let index = 0
 let sec = 10
 let countTime
 let time
-
+let username
 let currentStep = 1
 
 const handleNextPage = () => {
@@ -43,6 +43,7 @@ const checkInput = () => {
 	} else {
 		error.style.visibility = 'visible'
 	}
+	username = inputName.value
 }
 
 const handleProgressBar = () => {
@@ -53,17 +54,12 @@ const handleProgressBar = () => {
 	})
 	const activeSteps = document.querySelectorAll('.active-step')
 	progressBar.style.width = ((activeSteps.length - 1) / (steps.length - 1)) * 100 + '%'
-	changePage()
 	handleCurrentPage()
 }
 
-const changePage = () => {
-	pages.forEach(page => {
-		page.style.transform = `translateY(${-(currentStep - 1) * pageHeight}px)`
-	})
-}
 const handleCurrentPage = () => {
 	pages.forEach(page => {
+		page.style.transform = `translateY(${-(currentStep - 1) * pageHeight}px)`
 		if (currentStep == page.dataset.number) {
 			page.classList.add('quiz-active')
 		} else {
@@ -82,19 +78,24 @@ const checkLevel = e => {
 }
 const startCounter = () => {
 	clearInterval(countTime)
-	countTime = setInterval(() => {
-		if (sec > 0 && sliders[index].closest('.quiz__page').classList.contains('quiz-active')) {
-			time = times[index]
-			sec--
-			time.textContent = `${sec}s`
-			sliders[index].value = sec
-		} else if (sec === 0) {
-			handleNextPage()
-			resetTime()
-		} else {
-			return
-		}
-	}, 1000)
+	if (currentStep !== 13) {
+		countTime = setInterval(() => {
+			if (sec > 0 && sliders[index].closest('.quiz__page').classList.contains('quiz-active')) {
+				time = times[index]
+				sec--
+				time.textContent = `${sec}s`
+				sliders[index].value = sec
+			} else if (sec === 0) {
+				handleNextPage()
+				resetTime()
+			} else {
+				return
+			}
+		}, 1000)
+	} else {
+		showResult()
+		return
+	}
 }
 const resetTime = () => {
 	sec = 10
@@ -122,18 +123,23 @@ const checkAnswer = e => {
 
 const showResult = () => {
 	result.textContent = `${points}`
-	if ((points === 10)) {
+	const summaryPoints = document.querySelector('.quiz__summary-user')
+	summaryPoints.textContent = username
+	if (points === 10) {
 		summaryInfo.textContent = 'Gratulację odpowiedziałeś na wszystkie pytania poprawnie 😀'
 		summaryInfo.style.color = 'greenyellow'
 	} else if (points >= 6) {
-		summaryInfo.textContent = 'Odpowiedziałeś na więcej niż 50% pytań poprawnie '
+		summaryInfo.textContent = `Odpowiedziałeś na ${points} pytań poprawnie 😉`
 		summaryInfo.style.color = 'orange'
 	} else {
 		summaryInfo.textContent = 'Musisz się bardziej podszkolić ☹️'
 		summaryInfo.style.color = 'tomato'
 	}
 }
-showResult()
+
 nextBtn.addEventListener('click', checkInput)
 quizImages.forEach(image => image.addEventListener('click', checkLevel))
 answers.forEach(answer => answer.addEventListener('click', checkAnswer))
+restartBtn.addEventListener('click', () => {
+	location.reload()
+})
