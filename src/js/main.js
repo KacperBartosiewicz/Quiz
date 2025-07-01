@@ -2,6 +2,7 @@ const pages = document.querySelectorAll('.quiz__page')
 const quiz = document.querySelector('.quiz')
 const steps = document.querySelectorAll('.step')
 const progressBar = document.querySelector('.progress-bar')
+const easyProgressBox = document.querySelector('.progress-box--easy')
 const nextBtn = document.querySelector('.btn-next')
 const inputName = document.querySelector('.quiz__form-name')
 const error = document.querySelector('.quiz-error')
@@ -71,8 +72,10 @@ const handleCurrentPage = () => {
 const checkLevel = e => {
 	if (e.target.parentElement.matches('.easy')) {
 		level = 'easy'
+		easyProgressBox.classList.add('active-box')
 	} else {
 		level = 'hard'
+		easyProgressBox.classList.remove('active-box')
 	}
 	handleNextPage()
 }
