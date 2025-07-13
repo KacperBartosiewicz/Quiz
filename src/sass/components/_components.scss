@@ -1,5 +1,46 @@
 @use '../utilities/colors' as *;
 
+.quiz {
+	&__buttons {
+		display: flex;
+		justify-content: space-between;
+		width: 50%;
+		&-btn {
+			position: relative;
+			width: 140px;
+			height: 70px;
+			border: none;
+			background: none;
+			outline: none;
+			.bottom,
+			.top {
+				width: 100%;
+				height: 100%;
+				outline: 2px solid rgb(36, 38, 34);
+			}
+			.top {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				top: 0;
+				left: 0;
+				font-size: 2.2rem;
+				border-radius: 50%;
+				background-color: #973bb8;
+				z-index: 1;
+				text-transform: uppercase;
+			}
+			.bottom {
+				position: absolute;
+				top: 50&;
+				background-color: #3b3faf;
+
+				z-index: 0;
+			}
+		}
+	}
+}
 .progress-box {
 	position: relative;
 	display: flex;

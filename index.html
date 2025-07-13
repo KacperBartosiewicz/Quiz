@@ -11,7 +11,9 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-<link rel="icon" href="dist/img/tree_favicon.png" sizes="16x16" type="image/png">
+<link rel="icon" type="image/png" sizes="16x16" href="../dist/img/favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
 
 <script src="https://kit.fontawesome.com/a1f05848d0.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -32,16 +34,15 @@
         </div>
         <div class="quiz__page quiz-active" data-number="2">
             <h2 class="quiz-title">Wybierz poziom trudności</h2>
-            <div class="quiz__box">
-                <div class="quiz__img-question easy"><img src="/dist/img/question-mark-40876_640.png"
-                        alt="zielony znak zapytania">
-                </div>
-                <div class="quiz__img-question hard"><img src="/dist/img/interrogation-point-150807_640.png"
-                        alt="czerwony znak zapytania"></div>
-            </div>
-            <div class="quiz__text">
-                <p class="quiz__text-easy">Łatwy</p>
-                <p class="quiz__text-hard">Trudny</p>
+            <div class="quiz__buttons">
+                <button class=" quiz__buttons-btn quiz__buttons--easy">
+                    <div class="top easy">Łatwy</div>
+                    <div class="bottom"></div>
+                </button>
+                <button class="quiz__buttons-btn quiz__buttons--hard">
+                    <div class="top hard">Trudny</div>
+                    <div class="bottom"></div>
+                </button>
             </div>
         </div>
         <div class="quiz__page quest" data-number="3">
