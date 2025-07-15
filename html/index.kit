@@ -23,35 +23,22 @@
         <div class="quiz__page quiz-active" data-number="2">
             <h2 class="quiz-title">Wybierz poziom trudności</h2>
             <div class="quiz__buttons">
-                <button class=" quiz__buttons-btn quiz__buttons--easy">
-                    <div class="top easy">Łatwy</div>
-                    <div class="bottom"></div>
+                <button class=" quiz__buttons-btn easy">
+                    <div class="quiz__buttons-top quiz__buttons-top--easy">Łatwy</div>
+                    <div class="quiz__buttons-bottom quiz__buttons-bottom--easy "></div>
                 </button>
-                <button class="quiz__buttons-btn quiz__buttons--hard">
-                    <div class="top hard">Trudny</div>
-                    <div class="bottom"></div>
+                <button class="quiz__buttons-btn hard">
+                    <div class="quiz__buttons-top quiz__buttons-top--hard">Trudny</div>
+                    <div class="quiz__buttons-bottom quiz__buttons-bottom--hard "></div>
                 </button>
             </div>
         </div>
         <!-- @include 'easyQuiz.kit' -->
 
     </div>
-    <div class=" progress-box progress-box--easy">
-        <div class="progress-bar"></div>
-        <div class="step active-step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-        <div class="step"></div>
-    </div>
+    <!-- @include 'easyProgress.kit' -->
+    <!-- @include 'hardProgress.kit' -->
+
 
 
     <script src="./dist/js/main.min.js"></script>

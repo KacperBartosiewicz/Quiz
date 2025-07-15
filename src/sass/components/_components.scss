@@ -12,32 +12,62 @@
 			border: none;
 			background: none;
 			outline: none;
-			.bottom,
-			.top {
-				width: 100%;
-				height: 100%;
-				outline: 2px solid rgb(36, 38, 34);
+			cursor: pointer;
+		}
+		&-bottom,
+		&-top {
+			width: 100%;
+			height: 100%;
+			outline: 2px solid rgb(36, 38, 34);
+		}
+		&-top {
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			top: 0;
+			left: 0;
+			font-size: 2rem;
+			border-radius: 50%;
+			z-index: 1;
+			text-transform: uppercase;
+			&--easy {
+				background: $easy-btn-color;
 			}
-			.top {
-				position: absolute;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				top: 0;
-				left: 0;
-				font-size: 2.2rem;
-				border-radius: 50%;
-				background-color: #973bb8;
-				z-index: 1;
-				text-transform: uppercase;
+			&--hard {
+				background: $hard-btn-color;
 			}
-			.bottom {
-				position: absolute;
-				top: 50&;
-				background-color: #3b3faf;
-
-				z-index: 0;
+			transition: transform 0.3s;
+		}
+		&-bottom {
+			position: absolute;
+			top: 50&;
+			height: 80%;
+			border-bottom-right-radius: 50%;
+			border-bottom-left-radius: 50%;
+			z-index: 0;
+			&--easy {
+				background: rgb(34, 107, 9);
 			}
+			&--hard {
+				background: rgb(129, 16, 12);
+			}
+			transition: opacity 0.3s;
+		}
+		&-btn::before {
+			position: absolute;
+			content: '';
+			left: calc(100% - 115%);
+			top: 55%;
+			width: 130%;
+			height: 100%;
+			border-radius: 50%;
+			background: $border-btn-color;
+			z-index: 0;
+			outline: 2px solid rgb(36, 38, 34);
+		}
+		.choosen {
+			transform: translateY(35%);
 		}
 	}
 }
@@ -47,6 +77,11 @@
 	justify-content: space-between;
 	margin-bottom: 3em;
 	width: 600px;
+
+	&--hard,
+	&--easy {
+		display: none;
+	}
 }
 .progress-box::before,
 .progress-bar {
