@@ -1,6 +1,6 @@
 const pages = document.querySelectorAll('.quiz__page')
 const quiz = document.querySelector('.quiz')
-const steps = document.querySelectorAll('.step')
+const Easysteps = document.querySelectorAll('.progress-box--easy .step')
 const progressBar = document.querySelector('.progress-bar')
 const easyProgressBox = document.querySelector('.progress-box--easy')
 const nextBtn = document.querySelector('.btn-next')
@@ -31,10 +31,11 @@ let countTime
 let time
 let username
 let currentStep = 1
-let currentQuestion = 1
+let currentQuestion = 0
 
 const handleNextPage = () => {
 	currentStep++
+	handleCurrentPage()
 	startCounter()
 }
 
@@ -49,15 +50,15 @@ const checkInput = () => {
 }
 
 const handleProgressBar = () => {
-	steps.forEach((step, index) => {
+	Easysteps.forEach((step, index) => {
 		if (index < currentQuestion) {
 			step.classList.add('active-step')
+		} else {
+			step.classList.remove('active-step')
 		}
 	})
 	const activeSteps = document.querySelectorAll('.active-step')
-	progressBar.style.width = ((activeSteps.length - 1) / (steps.length - 1)) * 100 + '%'
-	handleCurrentPage()
-	console.log(activeSteps)
+	progressBar.style.width = ((activeSteps.length - 2) / (Easysteps.length - 1)) * 100 + '%'
 }
 
 const handleCurrentPage = () => {
@@ -77,12 +78,13 @@ const checkLevel = e => {
 		setTimeout(() => {
 			easyProgressBox.classList.add('active-box')
 		}, 1000)
+		easyBtnTop.classList.add('choosen')
+		easyBtnTop.nextElementSibling.style.opacity = 0
+		currentQuestion++
 	} else {
 		level = 'hard'
 		easyProgressBox.classList.remove('active-box')
 	}
-	e.target.classList.add('choosen')
-	e.target.nextElementSibling.style.opacity = 0
 	setTimeout(handleNextPage, 1000)
 }
 const startCounter = () => {
@@ -95,8 +97,7 @@ const startCounter = () => {
 				time.textContent = `${sec}s`
 				sliders[index].value = sec
 			} else if (sec === 0) {
-				handleNextPage()
-				resetTime()
+				handleNextQuestion()
 			} else {
 				return
 			}
@@ -105,6 +106,7 @@ const startCounter = () => {
 		showResult()
 		return
 	}
+	handleProgressBar()
 }
 const resetTime = () => {
 	sec = 10
@@ -115,7 +117,7 @@ const handleNextQuestion = () => {
 		currentQuestion++
 		resetTime()
 		handleNextPage()
-	}, 1000)
+	}, 500)
 }
 
 const checkAnswer = e => {
@@ -147,7 +149,14 @@ const showResult = () => {
 	}
 }
 
+const enterKeyCheck = e => {
+	if (e.key === 'Enter' && currentStep === 1) {
+		checkInput()
+	}
+}
+
 nextBtn.addEventListener('click', checkInput)
+inputName.addEventListener('keyup', enterKeyCheck)
 quizBtns.forEach(btn => btn.addEventListener('click', checkLevel))
 answers.forEach(answer => answer.addEventListener('click', checkAnswer))
 restartBtn.addEventListener('click', () => {

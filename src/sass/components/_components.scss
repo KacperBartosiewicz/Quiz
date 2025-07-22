@@ -31,13 +31,13 @@
 			border-radius: 50%;
 			z-index: 1;
 			text-transform: uppercase;
+			transition: transform 0.3s;
 			&--easy {
 				background: $easy-btn-color;
 			}
 			&--hard {
 				background: $hard-btn-color;
 			}
-			transition: transform 0.3s;
 		}
 		&-bottom {
 			position: absolute;
@@ -46,13 +46,13 @@
 			border-bottom-right-radius: 50%;
 			border-bottom-left-radius: 50%;
 			z-index: 0;
+			transition: opacity 0.3s;
 			&--easy {
 				background: rgb(34, 107, 9);
 			}
 			&--hard {
 				background: rgb(129, 16, 12);
 			}
-			transition: opacity 0.3s;
 		}
 		&-btn::before {
 			position: absolute;
@@ -81,6 +81,9 @@
 	&--hard,
 	&--easy {
 		display: none;
+		// :nth-child(2){
+
+		// }
 	}
 }
 .progress-box::before,
@@ -134,7 +137,7 @@
 		justify-content: flex-start;
 		img {
 			width: 65%;
-			margin-bottom: 0.5em;
+			margin-bottom: 1em;
 			border: 8px solid transparent;
 			border-image: linear-gradient(to right, #3b3faf, #973bb8) 50;
 			border-image-slice: 1;
